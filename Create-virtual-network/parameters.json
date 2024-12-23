@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkName": {
+      "value": "NG-KAELTE-TRIAL-VNET-001"
+    },
+    "addressPrefixes": { 
+      "value": [
+        "10.0.40.0/24"
+      ]
+    },
+    "primarySubnetPrefix": {
+      "value": "10.0.40.0/27"
+    },
+    "primarySubnetName": {
+      "value": "Primary"
+    },
+    "subscriptionId": {
+      "value": "e468025a-9923-4e46-977e-344fba9b2040"
+    },
+    "resourceGroupName": {
+      "value": "NG-KAELTE-TRIAL-000"
+    },
+    "hubName": {
+      "value": "NG-SANDBOX-JUMPSERVERS-VNET-001"
+    },
+    "virtualNetworksExternalid": {
+      "value": "[concat('/subscriptions/', parameters('subscriptionId'), '/resourceGroups/', parameters('resourceGroupName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('hubName'))]"
+    }
+  }
+}
+

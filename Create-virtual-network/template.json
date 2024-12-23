@@ -1,0 +1,80 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2017-06-01",
+      "name": "[parameters('virtualNetworkName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": "[parameters('addressPrefixes')]"
+        },
+        "encryption": {
+          "enabled": false,
+          "enforcement": "AllowUnencrypted"
+        },
+        "subnets": [
+          {
+            "name": "[parameters('primarySubnetName')]",
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), 'Primary')]",
+            "properties": {
+              "addressPrefix": "[parameters('primarySubnetPrefix')]",
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+          }
+        ],
+        "enableDdosProtection": false
+      }
+    }
+  ],
+  "parameters": {
+    "virtualNetworkName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the virtual network."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "germanywestcentral",
+      "metadata": {
+        "description": "The Azure region where the virtual network will be deployed."
+      }
+    },
+    "addressPrefixes": {
+      "type": "array",
+      "metadata": {
+        "description": "The address space prefixes for the virtual network."
+      }
+    },
+    "primarySubnetName": {
+      "type": "string",
+      "defaultValue": "Primary",
+      "metadata": {
+        "description": "The name of the primary subnet."
+      }
+    },
+    "primarySubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "The address prefix for the primary subnet."
+      }
+    },
+
+    "subscriptionId": {
+      "type": "string"
+    },
+    "resourceGroupName": {
+      "type": "string"
+    },
+    "hubName": {
+      "type": "string"
+    },
+    "virtualNetworksExternalid": {
+       "type": "string"
+    }
+  }
+}

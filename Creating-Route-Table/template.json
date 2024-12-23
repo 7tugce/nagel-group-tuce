@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "routeTablesName": {
+      "type": "string"
+    },
+    "location": {
+          "defaultValue": "germanywestcentral",
+          "type": "string"
+        }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Network/routeTables",
+      "apiVersion": "2017-06-01",
+      "name": "[parameters('routeTablesName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "disableBgpRoutePropagation": false,
+        "routes": []
+      }
+    }
+  ]
+}

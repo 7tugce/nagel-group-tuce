@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateEndpointName": {
+            "value": "NG-FILE-SERVICE-REVIEW-PEP-000"
+        },
+        "privateLinkResource": {
+            "value": "/subscriptions/parameters('subscriptionId')/resourceGroups/parameters('resourceGroup')/providers/Microsoft.Storage/storageAccounts/parameters('storageAccounts')"
+        },
+        
+        "targetSubResource": {
+          
+            "value": ["file"]
+        },
+        "requestMessage": {
+            "value": ""
+        },
+        "subnet": {
+            "value": "/subscriptions/parameters('subscriptionId')/resourceGroups/parameters('resourceGroup')/providers/Microsoft.Network/virtualNetworks/parameters('virtualNetwork')/subnets/parameters('primarySubnetName')"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/parameters('subscriptionId')/resourceGroups/parameters('resourceGroup')/providers/Microsoft.Network/virtualNetworks/parameters('virtualNetwork')"
+        },
+        "subnetDeploymentName": {
+            "value": "UpdateSubnetDeployment-20241210150727"
+        },
+        "virtualNetworkResourceGroup": {
+            "value": "NG-SANDBOX-JUMPSERVER-001"
+        },
+        "privateDnsDeploymentName": {
+            "value": "PrivateDns-20241210150727"
+        },
+        
+        "customNetworkInterfaceName": {
+            "value": "NG-FILE-SERVICE-REVIEW-PEP-000-nic"
+        },
+        "subscriptionId": {
+            "value": "19b13c98-b972-481c-8b67-43423907302a"
+        },
+        "resourceGroup": {
+            "value": "NG-SENTINEL-SQL-ASSESS-001"
+        },
+        "virtualNetwork": {
+            "value": "NG-SANDBOX-JUMPSERVER-VNET-001"
+        },
+        "primarySubnetName": {
+            "value": "Primary"
+        },
+        "storageAccounts": {
+            "value": "ngfileservicereviewsa000"
+        } ,
+        "privateDnsZones": {
+            "value": "PrivateDnsZone-9993cb06-e88e-4ed9-b843-52b472392058"
+        }
+    }
+}
